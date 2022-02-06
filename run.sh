@@ -34,6 +34,7 @@ release=`lsb_release -i`
 distributor_id=`trim_left "$release" "Distributor ID:"`
 distributor=`last_word $distributor_id`
 
+# DISTRO CHECKER
 case ${distributor,,} in
 
   pop | ubuntu | debian)
