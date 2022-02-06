@@ -2,6 +2,8 @@
 source ./run.conf
 source .zprofile
 
+mkdir -p ~/bin
+
 ######################################
 #
 # Shell
@@ -129,10 +131,61 @@ fi
 ## C build tools
 
 ## AWS
+if $GENESIS_AWS; then
+    echo "Installing AWS CLI v2"
+
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    unzip awscliv2.zip
+    sudo ./aws/install
+
+fi
 
 ## Kubenetes
 
+if $GENESIS_KUBERNETES; then
+    echo "Installing kubectl"
+    sudo apt update
+    sudo apt install -y apt-transport-https ca-certificates curl
+    sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+    echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+    sudo apt update
+    sudo apt install -y kubectl
+
+    # curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    # curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+    
+    # isCheckSumValid=$(echo -n "`cat kubectl.sha256` kubectl" | sha256sum -c)
+
+    # echo "check sum: $isCheckSumValid"
+    
+    # if [ `trim_left $isCheckSumValid "kubectl: "` != "OK" ]; then
+    #     sudo mv ./kubectl ~/bin/kubectl
+
+    #     echo "Kubernetes Insalled Successfully"
+    # else
+    #     rm ./kubectl
+    #     echo "Kubernetes Install Failed"
+    # fi
+
+fi
+
 ## Terraform
+
+if $GENESIS_TERRAFORM; then
+
+
+    # sudo curl -fsSLo /usr/share/keyrings/terraform-archive-keyring.gpg https://apt.releases.hashicorp.com/gpg
+
+    wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/terraform-archive-keyring.gpg
+
+    echo "deb [signed-by=/usr/share/keyrings/terraform-archive-keyring.gpg] https://apt.releases.hashicorp.com focal main" | sudo tee /etc/apt/sources.list.d/terraform.list
+
+    sudo apt update -y
+    sudo apt install terraform -y
+
+fi
 
 ## Docker - Podman
 
