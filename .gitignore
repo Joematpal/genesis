@@ -1,0 +1,4 @@
+*.zip
+aws
+kubectl
+kubectl.sha256
