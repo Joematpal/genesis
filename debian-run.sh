@@ -11,7 +11,7 @@ mkdir -p ~/bin
 ######################################
 
 if $GENESIS_ZSH; then
-    sudo apt install zsh
+    sudo apt install -y zsh
 fi
 
 if $GENESIS_OMZ; then
@@ -157,7 +157,7 @@ if $GENESIS_KUBERNETES; then
 
     echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
-    sudo apt update
+    sudo apt update -y
     sudo apt install -y kubectl
 
     ## To installed the latest.
@@ -182,6 +182,7 @@ fi
 ## Terraform
 
 if $GENESIS_TERRAFORM; then
+    echo "Installing Terraform"
 
     wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/terraform-archive-keyring.gpg
 
@@ -202,6 +203,8 @@ if $GENESIS_PODMAN; then
 fi
 
 ## .netrc
+
+# see update_github_netrc in the .zprofile
 
 ######################################
 #

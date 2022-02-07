@@ -100,7 +100,6 @@ update_go_alternatives () {
     fi
 }
 
-
 # Kubernetes
 export KUBE_EDITOR="nano"
 alias k="kubectl"
