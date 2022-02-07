@@ -8,7 +8,7 @@ To support your debian based distro just edit the case statment in run.sh
 ## Running Genesis Installer
 1. edit run.conf; its tell the run.sh which files to install 
 2. replace and variable reference to joematpal; i think there is one it the run.conf 
-2. ./run.sh
+3. ./run.sh
 
 ## TODO:
 - [ ] Add OpenJDK - debian
