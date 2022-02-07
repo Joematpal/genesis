@@ -10,6 +10,28 @@ export PATH="$PATH:/home/$USER/.local/bin"
 
 # GITHUB
 export GITHUB_USER=joematpal
+export GITHUB_TOKEN=`cat ~/.gh_pat`
+
+update_github_netrc () {
+    local update_value="machine github.com login $GITHUB_USER password $GITHUB_TOKEN"
+
+    if ! [ -f ~/.gh_pat ]; then 
+        echo "empty github personal acces token"
+        exit 1
+    fi
+
+    # TODO: this is missing an edge case where the file is created but the contents are empty
+    if [ -f ~/.netrc ]; then
+        echo "updating ~/.netrc"
+
+        sed -i "s/^machine github.*$/$update_value/" ~/.netrc
+    else
+        echo "creating ~/.netrc"
+
+        echo $update_value > ~/.netrc
+    fi
+
+}
 
 # ZSH
 alias zshconfig="code ~/.zshrc"
@@ -23,7 +45,6 @@ export PATH="$PATH:/usr/local/go-$GOVERSION/bin"
 export GOPATH=~/go
 export GOBIN="$GOPATH/bin"
 export PATH="$PATH:$GOBIN"
-
 
 export GOPRIVATE="github.com/anki,github.com/digital-dream-labs"
 
@@ -77,8 +98,8 @@ update_go_alternatives () {
     if [ -d /usr/local/go/$goversion ]; then
         update_golang $goversion
     fi
-
 }
+
 
 # Kubernetes
 export KUBE_EDITOR="nano"

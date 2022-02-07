@@ -2,3 +2,6 @@
 aws
 kubectl
 kubectl.sha256
+
+# github person access token
+.gh_pat
