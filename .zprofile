@@ -130,3 +130,13 @@ last_word () {
 first_word () {
     echo "${1% *}"
 }
+
+# echoalias echos the value that an alias is assigned to
+echoalias () {
+    local which_result replace
+    which_result=`which $1`
+
+    replace="$1:\saliased\sto\s"
+
+    echo `echo $which_result | sed "s/$replace//"`
+}
