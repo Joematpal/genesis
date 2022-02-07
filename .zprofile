@@ -101,6 +101,8 @@ alias ddljs="$HOME/js/src/github.com/digital-dream-labs"
 alias docker="podman"
 alias dk="podman"
 alias pd="podman"
+alias dcompose="podman-compose"
+alias docker-compose="podman-compose"
 
 ## this one is not needed for macos
 alias open="xdg-open"

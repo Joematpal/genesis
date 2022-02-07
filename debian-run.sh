@@ -85,7 +85,8 @@ if $GENESIS_PYTHON2; then
     # this gets installed to /usr/local/bin/; idk why
     sudo python2 get-pip.py
     rm get-pip.py
-
+    
+    # If you don't want an pip to alias to pip3 remove this line
     sudo rm /usr/local/bin/pip
 
     # TODO: this might need venv
