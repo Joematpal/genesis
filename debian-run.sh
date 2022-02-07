@@ -40,7 +40,6 @@ hostnamectl set-hostname $HOSTNAME
 ######################################
 
 ## Golang
-echo $GENESIS_GOLANG
 if $GENESIS_GOLANG; then
     update_go_alternatives
 fi
@@ -108,15 +107,22 @@ fi
 
 if $GENESIS_FLUTTER; then
     echo "Installing Flutter/Dart"
-
-    echo $mydart
-    # mkdir -p $mydart
     
     git clone https://github.com/flutter/flutter.git ~/flutter
     flutter doctor
 fi
 
 ## OpenJDK
+
+## Github CLI
+
+if $GENESIS_GITHUB; then
+    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/etc/apt/trusted.gpg.d/githubcli-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/trusted.gpg.d/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+    sudo apt update
+    sudo apt install gh
+    
+fi
 
 ######################################
 #
@@ -153,6 +159,7 @@ if $GENESIS_KUBERNETES; then
     sudo apt update
     sudo apt install -y kubectl
 
+    ## To installed the latest.
     # curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
     # curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
     
@@ -175,9 +182,6 @@ fi
 
 if $GENESIS_TERRAFORM; then
 
-
-    # sudo curl -fsSLo /usr/share/keyrings/terraform-archive-keyring.gpg https://apt.releases.hashicorp.com/gpg
-
     wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/terraform-archive-keyring.gpg
 
     echo "deb [signed-by=/usr/share/keyrings/terraform-archive-keyring.gpg] https://apt.releases.hashicorp.com focal main" | sudo tee /etc/apt/sources.list.d/terraform.list
@@ -191,6 +195,7 @@ fi
 
 if $GENESIS_PODMAN; then
     echo "Installing Podman"
+
     sudo apt autoremove -y docker.io docker runc
     sudo apt install -y podman
 fi
@@ -199,7 +204,7 @@ fi
 
 ######################################
 #
-# Applications - Desktop Environment
+# Applications - Desktop Environment Gnome
 #
 ######################################
 
@@ -209,11 +214,11 @@ fi
 
 ## Slack
 
-## Lauch Keyboard 
+## Launch Keyboard Configurator 
 
 ## Gnome Tweeks
 
-## Bitwardend
+## Bitwarden
 
 ## Tilix - manually change the super + T to open Tilix instead of default terminal
 

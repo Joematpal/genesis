@@ -5,6 +5,9 @@
 #
 ######################################
 
+# Pip3 installs packages to here
+export PATH="$PATH:/home/$USER/.local/bin"
+
 # GITHUB
 export GITHUB_USER=joematpal
 
@@ -90,6 +93,7 @@ export PATH="$PATH:$HOME/flutter/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 alias myjs="$HOME/js/src/github.com/$GITHUB_USER"
 alias ddljs="$HOME/js/src/github.com/digital-dream-labs"
 

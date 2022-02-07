@@ -38,7 +38,7 @@ distributor=`last_word $distributor_id`
 case ${distributor,,} in
 
   pop | ubuntu | debian)
-    echo okay!
+    echo "installing for debian based systems"
     ./debian-run.sh
     ;;
 
