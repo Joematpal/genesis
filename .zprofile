@@ -46,6 +46,7 @@ alias mygo="$HOME/go/src/github.com/$GITHUB_USER"
 alias ddl="$HOME/go/src/github.com/digital-dream-labs"
 
 export GOVERSION=1.20.2
+export GOROOT=/usr/local/go-$GOVERSION
 export PATH="$PATH:/usr/local/go-$GOVERSION/bin"
 export GOPATH=~/go
 export GOBIN="$GOPATH/bin"
