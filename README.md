@@ -15,3 +15,6 @@ To support your debian based distro just edit the case statment in run.sh
 - [ ] Describe .zprofile
 - [ ] Expand the Kubernetes functions in the .zprofile
 - [ ] Support Macos - brew install 
+- [ ] Add settings.json vs code
+- [ ] Add git config
+- [ ] 
