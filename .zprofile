@@ -1,9 +1,13 @@
+#! /bin/bash -e
 
 ######################################
 #
 # aliases & functions
 #
 ######################################
+
+# FLATPACK
+alias code="flatpak run com.visualstudio.code"
 
 # Pip3 installs packages to here
 export PATH="$PATH:/home/$USER/.local/bin"
@@ -40,7 +44,8 @@ alias rezsh="source ~/.zshrc"
 # Golang
 alias mygo="$HOME/go/src/github.com/$GITHUB_USER"
 alias ddl="$HOME/go/src/github.com/digital-dream-labs"
-export GOVERSION=1.17.6
+
+export GOVERSION=1.20.2
 export PATH="$PATH:/usr/local/go-$GOVERSION/bin"
 export GOPATH=~/go
 export GOBIN="$GOPATH/bin"
@@ -95,9 +100,8 @@ update_go_alternatives () {
 
     sed -i "s/^export GOVERSION=.*/export GOVERSION=$goversion/" ~/.zprofile
 
-    if [ -d /usr/local/go/$goversion ]; then
-        update_golang $goversion
-    fi
+    update_golang $goversion
+    
 }
 
 # Kubernetes
