@@ -3,6 +3,7 @@
 # HOSTNAME
 echo "Checking hostname"
 hostname
+
 # GENESIS_PROFILE
 # TODO: have this do a diff on the genisis zprofiles
 

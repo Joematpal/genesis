@@ -17,4 +17,3 @@ To support your debian based distro just edit the case statment in run.sh
 - [ ] Support Macos - brew install 
 - [ ] Add settings.json vs code
 - [ ] Add git config
-- [ ] 
