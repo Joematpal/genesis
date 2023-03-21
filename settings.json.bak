@@ -1,0 +1,17 @@
+{
+    "workbench.startupEditor": "none",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.profiles.linux": {
+      "zsh": {
+        "path": "/usr/bin/env",
+        "args": ["--", "flatpak-spawn", "--host", "--env=TERM=xterm-256color", "zsh"]
+      }
+    },
+    "go.testEnvVars": {
+
+    },
+    "go.testFlags": [
+     "-v",
+     "-count=1"
+    ]
+}
