@@ -98,7 +98,8 @@ update_go_alternatives () {
     if ! [ -z ${1+x}  ]; then
         goversion=$1
     fi
-
+    echo "updating go to version $goversion"
+    
     sed -i "s/^export GOVERSION=.*/export GOVERSION=$goversion/" ~/.zprofile
 
     update_golang $goversion

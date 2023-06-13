@@ -65,7 +65,7 @@ if $GENESIS_PYTHON3; then
     sudo ln -s /usr/bin/python3.9 /usr/bin/py
     sudo ln -s /usr/bin/python3.9 /usr/bin/python
     
-    sudo apt install python3-pip
+    sudo apt install -y python3-pip
     # TODO: this might need venv
 fi
 
@@ -157,7 +157,7 @@ if $GENESIS_KUBERNETES; then
     sudo apt install -y apt-transport-https ca-certificates curl
     sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 
-    echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+    sudo echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
     sudo apt update -y
     sudo apt install -y kubectl
@@ -200,6 +200,7 @@ fi
 if $GENESIS_PODMAN; then
     echo "Installing Podman"
 
+    sudo apt update -y
     sudo apt autoremove -y docker.io docker runc
     sudo apt install -y podman
 fi
